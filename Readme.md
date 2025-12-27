@@ -15,11 +15,11 @@ Before you begin, ensure that you have the following installed on your machine:
 1. Clone the repository to your local machine:
 
     ```bash
-    git clone https://github.com/AntsOrg/learnify.git
+   git clone https://github.com/Dipen999-ui/Web-Application.git
     ``` 
     or if you are using SSH :
     ```bash
-    git clone git@github.com:AntsOrg/learnify.git
+    git clone git@github.com:Dipen999-ui/Web-Application.git
     ```
 
 2. Navigate to the project directory:
