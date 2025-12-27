@@ -1,0 +1,21 @@
+# Visual Studio folders
+.vs/
+.vscode/
+
+# Build output
+/bin/
+/obj/
+
+# User-specific files
+/Properties/launchSettings.json
+appsettings.json
+
+# Fake or temporary files
+.fake
+
+# Entity Framework Migrations
+/Migrations/
+./Migrations/*
+
+# Database files (if any)
+*.db

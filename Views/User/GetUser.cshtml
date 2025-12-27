@@ -1,0 +1,54 @@
+@{
+    ViewData["Title"] = "Users";
+}
+@using learnify.Controllers;
+
+@model IEnumerable<learnify.Models.User>;
+
+<div>
+    <h4>Manage Users </h4>
+</div>
+@if (TempData["SelfDestroy"] != null)
+{
+    <div id="alert-dialog" class="m-auto alert alert-danger">@TempData["SelfDestroy"]</div>
+    TempData["SelfDestroy"] = null;
+}
+@if (TempData["UserDeleteSuccess"] != null)
+{
+    <div id="alert-dialog" class="m-auto alert alert-danger">@TempData["UserDeleteSuccess"]</div>
+    TempData["UserDeleteSuccess"] = null;
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">User Id</th>
+            <th scope="col">Full Name</th>
+            <th scope="col">Username</th>
+            <th scope="col">Email</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+
+            <tr>
+                <td>@user.UserId</td>
+                <td>@user.FullName</td>
+                <td>@user.Username</td>
+                <td>@user.Email</td>
+                <td>
+                    <div class="btn-group gap-2" role="group" aria-label="Basic mixed styles example">
+                        <form id="delete-form-@user.UserId" method="post" asp-controller="Admin" asp-action="DeleteUser">
+                            <input type="hidden" asp-for="@user.UserId" />
+                            <button type="submit" asp-controller="Admin" asp-route-userid="@user.UserId"
+                                asp-action="DeleteUser" class="btn btn-danger">Delete</button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>

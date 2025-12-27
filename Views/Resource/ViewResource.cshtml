@@ -1,0 +1,57 @@
+@{
+    ViewData["Title"] = "Resources";
+}
+@model IEnumerable<learnify.Models.Resource>
+
+<div class="container">
+    <div class="d-flex flex-row justify-content-between heaing-and-add-btn m-auto" style="max-width: 720px;">
+        <h1 class="text-center mb-4">All Resources</h1>
+        <a asp-controller="Resource" asp-action="AddResource"><button class="btn btn-outline-success mb-4"  >
+            Add New Resource <i class="bi bi-plus-circle"></i>
+        </button></a>
+        
+    </div>
+    @if(TempData["Success"] != null){
+    <div id="alert-dialog" class="w-75  m-auto mb-4 alert alert-success">@TempData["Success"]</div>
+    }
+
+    @foreach (var resource in Model)
+    {
+        <div class="row justify-content-center">
+            <div class="card mb-3" style="max-width: 720px;">
+                <div class="row g-0">
+
+                    <div class="col-md-8 ">
+                        <div class="card-body">
+                            <h5 class="card-title">@resource.Name</h5>
+                            <p class="card-text">@resource.Description</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 p-4 row align-items-center justify-items-center ">
+                        <a href="@resource.Link" target="_blank">
+                            <button class="px-4 btn btn-outline-success mr-4">
+                                View &nbsp; <i class="bi bi-box-arrow-up-right"></i>
+                            </button></a>
+                    </div>
+                </div>
+
+                <div class="container gap-4 mb-4 mt-2 row">
+                    <button class="col-3 btn btn-outline-warning field rounded-pill">
+                        <p class="card-text"><small class="text-body-secondary">@resource.Field</small></p>
+                    </button>
+                    <div class="tags col-7" >
+                        @{#pragma warning disable}
+                        @foreach(var tag in resource.Tags.Split(","))
+                        {
+                            <div class="btn px-2 py-1 border text-align-center bg-none border-danger rounded-pill m-autos text-black">
+                                <p class="m-auto fw-medium">@tag</p>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    }
+
+</div>
